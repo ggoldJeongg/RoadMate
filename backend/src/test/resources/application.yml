@@ -1,6 +1,9 @@
+# Tests run against in-memory H2 (PostgreSQL mode) so they need no running database.
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
   jpa:
     hibernate:
       ddl-auto: create-drop

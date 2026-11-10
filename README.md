@@ -20,21 +20,34 @@ RoadMate는 실제 주행 기록과 기준 코스를 비교해 이탈 구간을 
 | 영역 | 기술 |
 |---|---|
 | Backend | Java 21, Spring Boot 4, Spring Data JPA, Validation, Gradle |
-| Database | H2 (개발) → PostgreSQL (예정) |
+| Database | PostgreSQL |
 | Frontend | React, Vite |
-| Map / Location | Leaflet + OpenStreetMap, Web Geolocation API, Screen Wake Lock API |
-| Test | JUnit 5 |
+| Map / Location | NAVER Maps JavaScript API v3, Web Geolocation API, Screen Wake Lock API |
+| Test | JUnit 5 (테스트는 인메모리 H2 사용) |
 
 ## 프로젝트 구조
 
 ```text
 RoadMate/
 ├── backend/       # Spring Boot API 서버
-├── frontend/      # React + Vite 모바일 웹
-└── sample-data/   # 익명화한 테스트용 GPS 데이터
+└── frontend/      # React + Vite 모바일 웹
 ```
 
 ## 실행 방법
+
+### 사전 준비
+
+- Java 21, Node.js, PostgreSQL
+- PostgreSQL에 사용자와 데이터베이스 생성
+
+```sql
+CREATE USER roadmate WITH PASSWORD 'change-me';
+CREATE DATABASE roadmate OWNER roadmate;
+```
+
+- 접속 정보 설정: `backend/src/main/resources/application-local.example.yml`을 같은 폴더에 `application-local.yml`로 복사한 뒤 값을 채웁니다. 이 파일은 Git에 커밋되지 않습니다.
+  환경변수 `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`로도 설정할 수 있습니다.
+- NAVER Maps: NAVER Cloud Platform에서 Maps Application을 등록하고, 웹 서비스 URL에 `http://localhost:5173`과 폰 테스트용 HTTPS 주소를 등록합니다.
 
 ### Backend
 
@@ -43,7 +56,7 @@ cd backend
 ./gradlew bootRun
 ```
 
-`http://localhost:8080` 에서 실행됩니다. H2 콘솔: `http://localhost:8080/h2-console`
+`http://localhost:8080` 에서 실행됩니다. 테스트(`./gradlew test`)는 인메모리 H2로 실행되므로 PostgreSQL이 없어도 됩니다.
 
 ### Frontend
 

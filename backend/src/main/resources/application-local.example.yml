@@ -1,0 +1,12 @@
+# Copy this file to application-local.yml (same folder) and fill in your values.
+# application-local.yml is git-ignored.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/roadmate
+    username: roadmate
+    password: change-me
+
+# naver:
+#   maps:
+#     client-id: your-client-id
+#     client-secret: your-client-secret   # server-side APIs only (e.g. Directions)

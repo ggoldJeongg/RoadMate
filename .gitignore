@@ -7,7 +7,7 @@ backend/build/
 backend/bin/
 backend/out/
 !backend/gradle/wrapper/gradle-wrapper.jar
-# H2 file database
+# Local database files
 backend/data/
 *.mv.db
 *.trace.db
@@ -26,8 +26,6 @@ application-secret.yml
 # ===== Private GPS records (never commit real driving data) =====
 *.gpx
 *.kml
-sample-data/private/
-!sample-data/*.example.gpx
 
 # ===== IDE / OS =====
 .idea/
