@@ -1,0 +1,40 @@
+# ===== Local docs (kept locally, not committed) =====
+/docs/
+
+# ===== Backend (Gradle / Spring Boot) =====
+backend/.gradle/
+backend/build/
+backend/bin/
+backend/out/
+!backend/gradle/wrapper/gradle-wrapper.jar
+# H2 file database
+backend/data/
+*.mv.db
+*.trace.db
+
+# ===== Frontend (Node / Vite) — see also frontend/.gitignore =====
+node_modules/
+frontend/dist/
+
+# ===== Secrets & environment =====
+.env
+.env.*
+!.env.example
+application-local.yml
+application-secret.yml
+
+# ===== Private GPS records (never commit real driving data) =====
+*.gpx
+*.kml
+sample-data/private/
+!sample-data/*.example.gpx
+
+# ===== IDE / OS =====
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
